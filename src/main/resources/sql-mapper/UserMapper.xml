@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dface.annecy.dal.UserDAO">
+	<resultMap type="cn.dface.annecy.entity.UserDo" id="USER_MAP">
+		<result column="sid" jdbcType="INTEGER" property="sid" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+	</resultMap>
+
+	<select id="findUsersByName" resultMap="USER_MAP">
+		SELECT * FROM
+		T_USER_THIRD
+		WHERE NAME = #{name}
+	</select>
+
+	<select id="findUsers" resultMap="USER_MAP">
+		SELECT * FROM T_USER_THIRD
+	</select>
+
+	<insert id="insert">
+		INSERT INTO T_USER_THIRD(NAME, CREATE_AT, UPDATE_AT)
+		VALUES(#{name}, now(), now())
+	</insert>
+</mapper>
