@@ -2,28 +2,11 @@ package cn.dface.annecy.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
-import cn.dface.annecy.dal.UserDAO;
 import cn.dface.annecy.entity.UserDo;
 
-@Service("UserService")
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private UserDAO userDAO;
+    void insertUserDo(UserDo userDo);
 
-    public void insertUserDo(UserDo userDo) {
-        this.userDAO.insert(userDo);
-    }
-
-    public List<UserDo> findUsersByName(String name) {
-        if (StringUtils.hasText(name)) {
-            return this.userDAO.findUsersByName(name);
-        } else {
-            return this.userDAO.findUsers();
-        }
-    }
+    List<UserDo> findUsersByName(String name);
 }

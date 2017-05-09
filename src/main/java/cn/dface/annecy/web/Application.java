@@ -16,7 +16,7 @@ import cn.dface.annecy.service.UserService;
 @SpringBootApplication
 @RestController
 @MapperScan(basePackages = "cn.dface.annecy.dal")
-@ComponentScan({ "cn.dface.annecy.service" })
+@ComponentScan({ "cn.dface.annecy.service.*" })
 @EntityScan("cn.dface.annecy.entity")
 @EnableWebMvc
 public class Application {
